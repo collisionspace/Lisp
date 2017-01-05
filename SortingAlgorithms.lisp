@@ -10,3 +10,26 @@
 		   (setf y (- y 1)))
 		(setf (nth y listV) temp)) 
 	     listV)
+
+
+(defun greater (x L)
+  (remove-if-not
+   (lambda (e) (< e x))
+   L))
+
+(defun equaled (x L)
+  (remove-if-not
+   (lambda (e) (= e x))
+   L))
+
+(defun less (x L)
+  (remove-if-not
+   (lambda (e) (> e x))
+   L))
+
+(defun quicksort (list &aux (pivot (car list)) )
+ (if (cdr list)
+     (nconc (quicksort (greater pivot list))
+            (equaled pivot list)
+            (quicksort (less pivot list)))
+     list))
