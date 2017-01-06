@@ -12,7 +12,7 @@
 	     listV)
 
 
-(defun greater (x L)
+(defun less (x L)
   (remove-if-not
    (lambda (e) (< e x))
    L))
@@ -22,14 +22,14 @@
    (lambda (e) (= e x))
    L))
 
-(defun less (x L)
+(defun greater (x L)
   (remove-if-not
    (lambda (e) (> e x))
    L))
 
 (defun quicksort (list &aux (pivot (car list)) )
  (if (cdr list)
-     (nconc (quicksort (greater pivot list))
+     (nconc (quicksort (less pivot list))
             (equaled pivot list)
-            (quicksort (less pivot list)))
+            (quicksort (greater pivot list)))
      list))
